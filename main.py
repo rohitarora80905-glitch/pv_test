@@ -84,7 +84,7 @@ INPUT TEXT
         response = requests.post(
             OLLAMA_URL,
             json={"model": "gpt-oss:20b", "prompt": prompt, "stream": False},
-            timeout=60,                      # prevent hanging indefinitely
+            timeout=600,                      # prevent hanging indefinitely
         )
         response.raise_for_status()          # surface HTTP errors early
     except requests.RequestException as e:
