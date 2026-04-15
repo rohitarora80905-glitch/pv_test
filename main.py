@@ -9,7 +9,7 @@ OLLAMA_URL = "http://34.158.237.223:11434/api/generate"
 
 @app.get("/test")
 def test_pipeline():
-    raw_text = "patient jon was givn paracetamol 500 mg yestarday he say he feel dizy"
+    raw_text = "pt kavya was admited last nite nurse kavita said pt was givn dolo 650 but dr kavia said not to give dolo instead give paracetamol 500 mg but nurse kavya wrote dollo 650 again dr kavya ask nurse kavitha to update but she wrote paracetmol 650 mg pt also mention she took dolo at home but not sure dose dr kavyaa said monitor pt and avoid overdose"
 
     prompt = f"""
 You are an expert medical transcription correction assistant.
