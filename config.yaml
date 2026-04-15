@@ -1,0 +1,33 @@
+# ============================================================
+# clinical_pipeline_v12 — Central Configuration
+# ============================================================
+
+mongodb:
+  uri: "mongodb://localhost:27017"
+  db_name: "clinical_pipeline"
+  collections:
+    transcripts: "transcripts"         # Raw Whisper input
+    corrected: "corrected_transcripts" # LLM-cleaned output
+    name_memory: "name_memory"         # Persistent name dictionary
+    review_queue: "review_queue"       # Human-in-the-loop queue
+
+ollama:
+  base_url: "http://localhost:11434"
+  model: "gpt-oss:20b"                 # Model served via Ollama
+  timeout_seconds: 120
+  max_retries: 3
+
+pipeline:
+  chunk_size_words: 400                # Words per LLM chunk (300–500 safe range)
+  chunk_overlap_words: 30             # Overlap to preserve context at boundaries
+  confidence_threshold: 0.75          # Below this → flag for human review
+  batch_size: 5                        # Transcripts processed per batch run
+
+logging:
+  level: "INFO"                        # DEBUG | INFO | WARNING | ERROR
+  log_file: "output/pipeline.log"
+
+server:
+  host: "0.0.0.0"
+  port: 8000
+  reload: false                        # Set true only in local dev
