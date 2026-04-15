@@ -5,7 +5,7 @@ import re
 
 app = FastAPI()
 
-OLLAMA_URL = "http://localhost:11434/api/generate"
+OLLAMA_URL = "http://34.158.237.223:11434/api/generate"
 
 @app.get("/test")
 def test_pipeline():
